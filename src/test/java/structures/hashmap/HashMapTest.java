@@ -22,5 +22,19 @@ class HashMapTest {
                 });
     }
 
+    @Test
+    protected void test_increaseSize() {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        int emptySize = hm.size();
+        hm.put(10,1);
+        hm.put(2,4);
+        hm.put(3,222);
+        int increasedSize = hm.size();
+
+         assertAll(() -> {
+            assertEquals(0, emptySize);
+            assertEquals(3, increasedSize);
+                });
+    }
 
 }
