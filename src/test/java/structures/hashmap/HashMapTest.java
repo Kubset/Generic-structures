@@ -100,6 +100,16 @@ class HashMapTest {
         assertEquals(emptySet, hm.keySet());
     }
 
+    @Test
+    protected void test_returnValues() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+
+        Set<Integer> result = hm.values();
+        Set<Integer> expected = new HashSet<>(Arrays.asList(1,4,222,12,422,2222));
+
+        assertEquals(expected, result);
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
