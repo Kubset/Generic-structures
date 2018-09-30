@@ -147,6 +147,21 @@ class HashMapTest {
 
     }
 
+    @Test
+    protected void test_putToPresentKey() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int size = hm.size();
+
+        hm.put(10,222);
+
+
+        assertAll(() -> {
+            assertEquals(size, hm.size());
+            assertEquals(new Integer(222), hm.get(10));
+        });
+
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
