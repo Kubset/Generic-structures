@@ -72,8 +72,18 @@ public class HashMap<K,V> {
         size++;
     }
 
-    public Object remove(Object key) {
-        return null;
+    public void remove(K key) {
+        int position = getHash(key);
+        if(elements[position] != null) {
+            for(int i=0; i<elements[position].size(); i++) {
+                if(elements[position].get(i).getKey().equals(key)) {
+                    elements[position].remove(i);
+                    size--;
+                }
+            }
+        }
+
+
     }
 
     public void putAll(Map m) {
@@ -82,6 +92,7 @@ public class HashMap<K,V> {
 
     public void clear() {
         elements = new LinkedList[bucketSize];
+        size = 0;
     }
 
     public Set keySet() {
