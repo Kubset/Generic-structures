@@ -55,8 +55,19 @@ public class HashMap<K,V> {
         return isKey;
     }
 
-    public boolean containsValue(Object value) {
-        return false;
+    public boolean containsValue(V value) {
+        boolean isValue = false;
+
+        for(int i=0; i<elements.length; i++) {
+            if(elements[i] != null) {
+                for(KeyValue kv : elements[i]) {
+                    if(kv.getValue().equals(value)) {
+                        isValue = true;
+                    }
+                }
+            }
+        }
+        return isValue;
     }
 
     public V get(K key) {
