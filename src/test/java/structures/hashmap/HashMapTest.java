@@ -172,7 +172,7 @@ class HashMapTest {
     }
 
     @Test
-    protected void test_increasingBucket() throws IllegalAccessException, NoSuchFieldException {
+    protected void test_increaseBucketSize() throws IllegalAccessException, NoSuchFieldException {
         HashMap<Integer, Integer> hm = produceFilledHashMap(1000);
         Field f = hm.getClass().getDeclaredField("bucketSize");
         f.setAccessible(true);
@@ -181,7 +181,15 @@ class HashMapTest {
         assertEquals(2048, bucketSize);
     }
 
-    
+    @Test
+    protected void test_reduceBucketSize() throws IllegalAccessException, NoSuchFieldException {
+        HashMap<Integer, Integer> hm = produceFilledHashMap(2);
+        Field f = hm.getClass().getDeclaredField("bucketSize");
+        f.setAccessible(true);
+        int bucketSize = (int) f.get(hm);
+
+        assertEquals(4, bucketSize);
+    }
 
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
