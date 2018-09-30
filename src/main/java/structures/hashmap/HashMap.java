@@ -1,9 +1,6 @@
 package structures.hashmap;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class HashMap<K,V> {
     private int bucketSize;
@@ -86,18 +83,25 @@ public class HashMap<K,V> {
 
     }
 
-    public void putAll(Map m) {
-
-    }
+//    public void putAll(Map m) {
+//
+//    }
 
     public void clear() {
         elements = new LinkedList[bucketSize];
         size = 0;
     }
 
-    public Set keySet() {
-        return null;
+    public Set<K> keySet() {
+        Set<K> keys = new HashSet<>();
+        for(int i=0; i<elements.length;i++) {
+            if(elements[i] != null) {
+                elements[i].forEach((keyValue) -> keys.add(keyValue.getKey()));
+            }
+        }
+        return keys;
     }
+
 
     public Collection values() {
         return null;
