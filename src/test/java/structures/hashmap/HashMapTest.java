@@ -83,7 +83,7 @@ class HashMapTest {
 
     @Test
     protected void test_returnKeySet() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
 
         Set<Integer> result = hm.keySet();
         Set<Integer> expected = new HashSet<>(Arrays.asList(10,2,3,100,0,22));
