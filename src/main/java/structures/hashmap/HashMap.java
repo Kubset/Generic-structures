@@ -149,4 +149,13 @@ public class HashMap<K,V> {
     private int getHash(K key) {
         return key.hashCode() % bucketSize;
     }
+
+    private void resizeIfNeeded() {
+        if(size* loadFactor > bucketSize) {
+           //bucket *2
+        } else if(size*loadFactor/2 < bucketSize) {
+           // bucket/2
+        }
+
+    }
 }
