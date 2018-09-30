@@ -85,10 +85,25 @@ public class HashMap<K,V> {
 
     public void put(K key, V value) {
         KeyValue<K,V> keyValue = new KeyValue<K,V>(key, value);
+        boolean isKeyPresent = false;
         int position = getHash(key);
-        elements[position] = new LinkedList<>();
-        elements[position].add(keyValue);
-        size++;
+        if(elements[position] == null) {
+            elements[position] = new LinkedList<>();
+            elements[position].add(keyValue);
+            size++;
+        } else {
+            for(KeyValue<K,V> kv : elements[position]) {
+                if(kv.getKey().equals(key)) {
+                    kv.setValue(value);
+                    isKeyPresent = true;
+                }
+            }
+            if(!isKeyPresent) {
+                elements[position].add(keyValue);
+                size++;
+            }
+
+        }
     }
 
     public void remove(K key) {
@@ -104,10 +119,6 @@ public class HashMap<K,V> {
 
 
     }
-
-//    public void putAll(Map m) {
-//
-//    }
 
     public void clear() {
         elements = new LinkedList[bucketSize];
