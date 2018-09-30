@@ -24,16 +24,16 @@ class HashMapTest {
 
     @Test
     protected void test_increaseSize() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        int emptySize = hm.size();
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int size = hm.size();
         hm.put(10,1);
         hm.put(2,4);
         hm.put(3,222);
         int increasedSize = hm.size();
 
          assertAll(() -> {
-            assertEquals(0, emptySize);
-            assertEquals(3, increasedSize);
+            assertEquals(6, size);
+            assertEquals(9, increasedSize);
                 });
     }
 
@@ -49,6 +49,16 @@ class HashMapTest {
             assertEquals(6, size);
             assertEquals(4, reducedSize);
         });
+
+    }
+
+    @Test
+    protected void test_cleanMap() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        
+        hm.clear();
+
+        assertEquals(0, hm.size());
 
     }
 
