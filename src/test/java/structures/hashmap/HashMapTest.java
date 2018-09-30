@@ -162,6 +162,16 @@ class HashMapTest {
 
     }
 
+    @Test
+    protected void test_removeAbsentKey() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int size = hm.size();
+
+        hm.remove(9999);
+
+        assertEquals(size, hm.size());
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
