@@ -133,6 +133,20 @@ class HashMapTest {
 
     }
 
+    @Test
+    protected void containsValue() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+
+        boolean notPresentValue = hm.containsValue(1234567);
+        boolean presentValue = hm.containsValue(222);
+
+        assertAll(() -> {
+            assertTrue(presentValue);
+            assertFalse(notPresentValue);
+        });
+
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
