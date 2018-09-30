@@ -2,9 +2,8 @@ package structures.hashmap;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.lang.reflect.Field;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,13 +30,13 @@ class HashMapTest {
         HashMap<Integer, Integer> hm = produceFilledHashMap();
         int size = hm.size();
         hm.put(10,1);
-        hm.put(2,4);
-        hm.put(3,222);
+        hm.put(71,4);
+        hm.put(83,222);
         int increasedSize = hm.size();
 
          assertAll(() -> {
             assertEquals(6, size);
-            assertEquals(9, increasedSize);
+            assertEquals(8, increasedSize);
                 });
     }
 
@@ -172,6 +171,18 @@ class HashMapTest {
         assertEquals(size, hm.size());
     }
 
+    @Test
+    protected void test_increasingBucket() throws IllegalAccessException, NoSuchFieldException {
+        HashMap<Integer, Integer> hm = produceFilledHashMap(1000);
+        Field f = hm.getClass().getDeclaredField("bucketSize");
+        f.setAccessible(true);
+        int bucketSize = (int) f.get(hm);
+
+        assertEquals(2048, bucketSize);
+    }
+
+    
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
@@ -182,6 +193,28 @@ class HashMapTest {
         hm.put(0,422);
         hm.put(22,2222);
         return hm;
+    }
+
+    private HashMap<Integer, Integer> produceFilledHashMap(int size) {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        List<Integer> keys = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        initialize(keys, size);
+        initialize(values, size);
+
+        for(int i=0 ;i<size; i++) {
+            hm.put(keys.get(i), values.get(i));
+        }
+
+        return hm;
+    }
+
+
+    public static void initialize(List<Integer> list, int size) {
+       Random rand = new Random();
+       for(int i=0; i<size; i++) {
+           list.add(rand.nextInt(10000000));
+       }
     }
 
 }
