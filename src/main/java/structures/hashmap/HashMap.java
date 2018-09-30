@@ -3,7 +3,7 @@ package structures.hashmap;
 import java.util.*;
 
 public class HashMap<K,V> {
-    private int bucketSize;
+    public int bucketSize;
     private float loadFactor;
     private LinkedList<KeyValue<K,V>>[] elements;
     private int size;
@@ -84,6 +84,7 @@ public class HashMap<K,V> {
     }
 
     public void put(K key, V value) {
+        resizeIfNeeded();
         KeyValue<K,V> keyValue = new KeyValue<K,V>(key, value);
         boolean isKeyPresent = false;
         int position = getHash(key);
@@ -151,11 +152,29 @@ public class HashMap<K,V> {
     }
 
     private void resizeIfNeeded() {
-        if(size* loadFactor > bucketSize) {
-           //bucket *2
-        } else if(size*loadFactor/2 < bucketSize) {
-           // bucket/2
+        if(size > bucketSize*loadFactor) {
+            initializeNewBucket();
+            bucketSize *= 2;
+        } else if(size < bucketSize*loadFactor/2) {
+            initializeNewBucket();
+            bucketSize /= 2;
         }
 
+
+
+    }
+
+    private void initializeNewBucket() {
+        LinkedList<KeyValue<K,V>>[] temp = new LinkedList[bucketSize*2];
+        KeyValue<K,V> keyValue;
+        for(K key : keySet()) {
+            keyValue = new KeyValue<>(key, get(key));
+            int position = getHash(key);
+            if(temp[position] == null) {
+                temp[position] = new LinkedList<>();
+            }
+            temp[position].add(keyValue);
+       }
+       elements = temp;
     }
 }
