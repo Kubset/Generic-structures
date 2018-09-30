@@ -110,6 +110,15 @@ class HashMapTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    protected void test_returnEmptyValues() {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+
+        Set<Integer> emptySet = new HashSet<>();
+
+        assertEquals(emptySet, hm.values());
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
