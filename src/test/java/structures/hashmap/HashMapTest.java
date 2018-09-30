@@ -191,6 +191,16 @@ class HashMapTest {
         assertEquals(4, bucketSize);
     }
 
+    @Test
+    protected void test_increaseBucketSizeWithCustomLoadFactor() throws IllegalAccessException, NoSuchFieldException {
+        HashMap<Integer, Integer> hm = produceFilledHashMap(250, 0.5F);
+        Field f = hm.getClass().getDeclaredField("bucketSize");
+        f.setAccessible(true);
+        int bucketSize = (int) f.get(hm);
+
+        assertEquals(512, bucketSize);
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
@@ -205,6 +215,20 @@ class HashMapTest {
 
     private HashMap<Integer, Integer> produceFilledHashMap(int size) {
         HashMap<Integer, Integer> hm = new HashMap<>();
+        List<Integer> keys = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
+        initialize(keys, size);
+        initialize(values, size);
+
+        for(int i=0 ;i<size; i++) {
+            hm.put(keys.get(i), values.get(i));
+        }
+
+        return hm;
+    }
+
+    private HashMap<Integer, Integer> produceFilledHashMap(int size, float loadFactor) {
+        HashMap<Integer, Integer> hm = new HashMap<>(16,loadFactor);
         List<Integer> keys = new ArrayList<>();
         List<Integer> values = new ArrayList<>();
         initialize(keys, size);
