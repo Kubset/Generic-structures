@@ -103,8 +103,14 @@ public class HashMap<K,V> {
     }
 
 
-    public Collection values() {
-        return null;
+    public Set<V> values() {
+         Set<V> values = new HashSet<>();
+        for(int i=0; i<elements.length;i++) {
+            if(elements[i] != null) {
+                elements[i].forEach((keyValue) -> values.add(keyValue.getValue()));
+            }
+        }
+        return values;
     }
 
     private int getHash(K key) {
