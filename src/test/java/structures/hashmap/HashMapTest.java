@@ -119,6 +119,20 @@ class HashMapTest {
         assertEquals(emptySet, hm.values());
     }
 
+    @Test
+    protected void test_containsKey() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+
+        boolean notPresentKey = hm.containsKey(1234567);
+        boolean presentKey = hm.containsKey(10);
+
+        assertAll(() -> {
+            assertTrue(presentKey);
+            assertFalse(notPresentKey);
+        });
+
+    }
+
 
     private HashMap<Integer, Integer> produceFilledHashMap() {
         HashMap<Integer, Integer> hm = new HashMap<>();
