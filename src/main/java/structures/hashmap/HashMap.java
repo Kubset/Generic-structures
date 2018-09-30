@@ -40,8 +40,19 @@ public class HashMap<K,V> {
 
 
 
-    public boolean containsKey(Object key) {
-        return false;
+    public boolean containsKey(K key) {
+        boolean isKey = false;
+
+        for(int i=0; i<elements.length; i++) {
+            if(elements[i] != null) {
+                for(KeyValue kv : elements[i]) {
+                    if(kv.getKey().equals(key)) {
+                        isKey = true;
+                    }
+                }
+            }
+        }
+        return isKey;
     }
 
     public boolean containsValue(Object value) {
