@@ -1,78 +1,98 @@
 package structures.hashmap;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-public class HashMap<K,V> implements Map {
-    int bucketSize;
-    float loadFactor;
+public class HashMap<K,V> {
+    private int bucketSize;
+    private float loadFactor;
+    private LinkedList<KeyValue<K,V>>[] elements;
+    private int size;
 
 
     public HashMap() {
+        size = 0;
+        bucketSize = 16;
+        loadFactor = 0.8F;
+        this.elements = new LinkedList[bucketSize];
     }
 
     public HashMap(int bucketSize) {
+        size = 0;
+        this.loadFactor = 0.8F;
         this.bucketSize = bucketSize;
+        this.elements = new LinkedList[bucketSize];
     }
 
-    @Override
+    public HashMap(int bucketSize, float loadFactor) {
+        size = 0;
+        this.loadFactor = loadFactor;
+        this.bucketSize = bucketSize;
+        this.elements = new LinkedList[bucketSize];
+    }
+
     public int size() {
-        return 0;
+        return size;
     }
 
-    @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
-    @Override
+
+
     public boolean containsKey(Object key) {
         return false;
     }
 
-    @Override
     public boolean containsValue(Object value) {
         return false;
     }
 
-    @Override
-    public Object get(Object key) {
+    public V get(K key) {
+        int position = getHash(key);
+        if (elements[position] == null) return null;
+        else {
+            for(KeyValue<K,V> keyValue: elements[position]) {
+                if(keyValue.getKey().equals(key)) {
+                    return keyValue.getValue();
+                }
+            }
+        }
         return null;
     }
 
-    @Override
-    public Object put(Object key, Object value) {
-        return null;
+    public void put(K key, V value) {
+        KeyValue<K,V> keyValue = new KeyValue<K,V>(key, value);
+        int position = getHash(key);
+        elements[position] = new LinkedList<>();
+        elements[position].add(keyValue);
+        size++;
     }
 
-    @Override
     public Object remove(Object key) {
         return null;
     }
 
-    @Override
     public void putAll(Map m) {
 
     }
 
-    @Override
     public void clear() {
-
+        elements = new LinkedList[bucketSize];
     }
 
-    @Override
     public Set keySet() {
         return null;
     }
 
-    @Override
     public Collection values() {
         return null;
     }
 
-    @Override
-    public Set<Entry> entrySet() {
-        return null;
+    private int getHash(K key) {
+        return key.hashCode() % bucketSize;
     }
 }
