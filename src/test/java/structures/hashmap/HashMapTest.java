@@ -55,11 +55,26 @@ class HashMapTest {
     @Test
     protected void test_cleanMap() {
         HashMap<Integer, Integer> hm = produceFilledHashMap();
-        
+
         hm.clear();
 
         assertEquals(0, hm.size());
 
+    }
+
+    @Test
+    protected void test_isEmpty() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+
+        boolean notEmpty = hm.isEmpty();
+        hm.clear();
+        boolean empty = hm.isEmpty();
+
+
+        assertAll(() -> {
+            assertTrue(empty);
+            assertFalse(notEmpty);
+        });
     }
 
 
