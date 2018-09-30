@@ -37,4 +37,31 @@ class HashMapTest {
                 });
     }
 
+    @Test
+    protected void test_reduceSize() {
+        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int size = hm.size();
+        hm.remove(10);
+        hm.remove(2);
+        int reducedSize = hm.size();
+
+        assertAll(() -> {
+            assertEquals(6, size);
+            assertEquals(4, reducedSize);
+        });
+
+    }
+
+
+    private HashMap<Integer, Integer> produceFilledHashMap() {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        hm.put(10,1);
+        hm.put(2,4);
+        hm.put(3,222);
+        hm.put(100,12);
+        hm.put(0,422);
+        hm.put(22,2222);
+        return hm;
+    }
+
 }
