@@ -2,6 +2,10 @@ package structures.hashmap;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HashMapTest {
@@ -75,6 +79,16 @@ class HashMapTest {
             assertTrue(empty);
             assertFalse(notEmpty);
         });
+    }
+
+    @Test
+    protected void test_returnKeySet() {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+
+        Set<Integer> result = hm.keySet();
+        Set<Integer> expected = new HashSet<>(Arrays.asList(10,2,3,100,0,22));
+
+        assertEquals(expected, result);
     }
 
 
