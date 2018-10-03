@@ -211,7 +211,8 @@ class LinkedListTest {
         customList.push(elementToPush);
         defaultList.push(elementToPush);
 
-        assertEquals(defaultList.toString(), defaultList.toString());
+
+        assertEquals(defaultList.toString(), customList.toString());
 
     }
 
