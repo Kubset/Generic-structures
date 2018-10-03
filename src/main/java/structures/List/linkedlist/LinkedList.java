@@ -26,13 +26,18 @@ public class LinkedList<T> implements List<T> {
 
     public void add(int index, T element) {
         Node<T> currentNode = firstNode;
-        for(int i=0; i<index; i++) {
-            currentNode = currentNode.getNext();
-        }
         Node<T> newNode = new Node<>(element);
-        newNode.setNext(currentNode.getNext());
-        currentNode.setNext(newNode);
-
+        if(index == 0) {
+            newNode.setNext(firstNode);
+            firstNode = newNode;
+        } else {
+            for(int i=1; i<index; i++) {
+                currentNode = currentNode.getNext();
+            }
+            newNode.setNext(currentNode.getNext());
+            currentNode.setNext(newNode);
+        }
+        size++;
     }
 
     public T get(int index) {
