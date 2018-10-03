@@ -272,6 +272,16 @@ class LinkedListTest {
 
     @Test
     public void test_addLastToEmpty() {
+        int numberElements = 47;
+        Integer elementToAdd = 221;
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
+
+        customList.addFirst(elementToAdd);
+        defaultList.addFirst(elementToAdd);
+
+        assertEquals(defaultList.toString(), customList.toString());
+    
 
     }
 
