@@ -10,5 +10,5 @@ public interface List<T> {
     public void clear();
     public boolean contains(T element);
     public int indexOf(T element);
-    public T[] toArray();
+    public Object[] toArray();
 }
