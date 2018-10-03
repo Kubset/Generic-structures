@@ -86,7 +86,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public T getLast() {
-        return null;
+        return lastNode.getValue();
     }
 
     public void clear() {
