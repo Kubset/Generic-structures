@@ -46,12 +46,19 @@ class LinkedListTest {
 
     @Test
     public void test_addValueOnFirstIndex() {
+        int numberElements = 3;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
+        customList.add(0, -1);
+        defaultList.add(0, -1);
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     @Test
     public void test_addValueOnLastIndex() {
-
+       
     }
 
     @Test
