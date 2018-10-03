@@ -34,6 +34,13 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
     @Test
+    public void test_ToStringMethodOnEmptyList() {
+        List<Integer> customList = new LinkedList<>();
+        java.util.List<Integer> defaultList = new java.util.LinkedList<>();
+
+        assertEquals(defaultList.toString(), customList.toString());
+    }
+    @Test
     public void test_addFewValuesInTheMiddleOfList() {
         int numberElements = 25;
         List<Integer> customList = initializeCustomList(numberElements);
