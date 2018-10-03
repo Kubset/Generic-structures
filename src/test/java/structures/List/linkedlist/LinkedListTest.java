@@ -148,6 +148,12 @@ class LinkedListTest {
 
     @Test
     public void test_removeByIndexBiggerThanSize() {
+        int numberElements = 22;
+        List<Integer> customList = initializeCustomList(numberElements);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> customList.remove(customList.size()+99));
+
+
 
     }
 
