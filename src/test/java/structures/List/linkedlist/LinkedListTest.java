@@ -152,13 +152,14 @@ class LinkedListTest {
         List<Integer> customList = initializeCustomList(numberElements);
 
         assertThrows(IndexOutOfBoundsException.class, () -> customList.remove(customList.size()+99));
-
-
-
     }
 
     @Test
     public void test_removeByNegativeIndex() {
+        int numberElements = 17;
+        List<Integer> customList = initializeCustomList(numberElements);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> customList.remove(-277));
 
     }
 
