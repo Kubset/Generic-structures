@@ -259,7 +259,15 @@ class LinkedListTest {
 
     @Test
     public void test_addLast() {
+        int numberElements = 17;
+        Integer elementToAdd = 22;
+        LinkedList<Integer> customList = initializeCustomList(37);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(37);
 
+        customList.addLast(elementToAdd);
+        defaultList.addLast(elementToAdd);
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     @Test
