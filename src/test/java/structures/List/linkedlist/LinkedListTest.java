@@ -413,11 +413,28 @@ class LinkedListTest {
 
     @Test
     public void test_containsEmptyList() {
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
+        boolean defaultContains = defaultList.contains(0);
+        boolean customContains = defaultList.contains(0);
+
+        assertEquals(defaultContains, customContains);
     }
 
     @Test
     public void test_indexOfPresentElement() {
+        int numberElements = 28;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        customList.add(11,-9);
+        defaultList.add(11,-9);
+
+        assertAll(() -> {
+            assertEquals(defaultList.indexOf(-9), customList.indexOf(-9));
+            assertEquals(defaultList.toString(), customList.toString());
+        });
 
     }
 
