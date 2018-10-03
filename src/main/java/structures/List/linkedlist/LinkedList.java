@@ -3,6 +3,8 @@ package structures.List.linkedlist;
 import structures.List.List;
 import structures.queue.Deque;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList<T> implements List<T>, Deque<T> {
 
     private Node<T> firstNode;
@@ -97,6 +99,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public T pop() {
+        if(size==0) throw new NoSuchElementException();
         T firstValue = firstNode.getValue();
         firstNode = firstNode.getNext();
         size--;
