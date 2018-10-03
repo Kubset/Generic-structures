@@ -7,9 +7,8 @@ public interface List<T> {
     public T get(int index);
     public int size();
     public void remove(int index);
-
     public void clear();
-    public void contains(T element);
+    public boolean contains(T element);
     public int indexOf(T element);
     public T[] toArray();
 }
