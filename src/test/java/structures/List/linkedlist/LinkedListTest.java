@@ -218,7 +218,6 @@ class LinkedListTest {
 
     @Test
     public void test_emptyPush() {
-        int numberElements = 4;
         Integer elementToPush = 78;
         LinkedList<Integer> customList = new LinkedList<>();
         java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
@@ -235,8 +234,8 @@ class LinkedListTest {
     public void test_addFirst() {
         int numberElements = 2;
         Integer elementToAdd = 66;
-        LinkedList<Integer> customList = initializeCustomList(22);
-        java.util.LinkedList<Integer> defaultList = initializeDefaultList(22);
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
 
         customList.addFirst(elementToAdd);
         defaultList.addFirst(elementToAdd);
@@ -246,7 +245,6 @@ class LinkedListTest {
 
     @Test
     public void test_addFirstToEmpty() {
-        int numberElements = 11;
         Integer elementToAdd = 999;
         LinkedList<Integer> customList = new LinkedList<>();
         java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
@@ -261,8 +259,8 @@ class LinkedListTest {
     public void test_addLast() {
         int numberElements = 17;
         Integer elementToAdd = 22;
-        LinkedList<Integer> customList = initializeCustomList(37);
-        java.util.LinkedList<Integer> defaultList = initializeDefaultList(37);
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
 
         customList.addLast(elementToAdd);
         defaultList.addLast(elementToAdd);
@@ -272,8 +270,7 @@ class LinkedListTest {
 
     @Test
     public void test_addLastToEmpty() {
-        int numberElements = 47;
-        Integer elementToAdd = 221;
+        Integer elementToAdd = 227;
         LinkedList<Integer> customList = new LinkedList<>();
         java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
@@ -281,13 +278,21 @@ class LinkedListTest {
         defaultList.addFirst(elementToAdd);
 
         assertEquals(defaultList.toString(), customList.toString());
-    
-
     }
 
     @Test
     public void test_getFirst() {
+        int numberElements = 77;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
 
+        Integer defaultLastElement = customList.getFirst();
+        Integer customLastElement = defaultList.getFirst();
+
+        assertAll(() -> {
+            assertEquals(defaultLastElement, customLastElement);
+            assertEquals(defaultList.toString(), customList.toString());
+        });
     }
 
     @Test
