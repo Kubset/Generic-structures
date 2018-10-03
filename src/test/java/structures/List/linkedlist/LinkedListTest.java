@@ -246,7 +246,15 @@ class LinkedListTest {
 
     @Test
     public void test_addFirstToEmpty() {
+        int numberElements = 11;
+        Integer elementToAdd = 999;
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
+        customList.addFirst(elementToAdd);
+        defaultList.addFirst(elementToAdd);
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     @Test
