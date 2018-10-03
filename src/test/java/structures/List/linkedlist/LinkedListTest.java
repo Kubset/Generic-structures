@@ -165,7 +165,14 @@ class LinkedListTest {
 
     @Test
     public void test_removeFirstElementByIndex() {
+        int numberElements = 33;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
+        defaultList.remove(0);
+        customList.remove(0);
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     private List<Integer> initializeCustomList(int size) {
