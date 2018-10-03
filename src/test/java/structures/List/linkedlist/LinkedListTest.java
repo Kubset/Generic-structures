@@ -36,7 +36,7 @@ class LinkedListTest {
         List<Integer> customList = initializeCustomList(numberElements);
         java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
-        for(int i=0; i<25; i = i+4) {
+        for(int i=1; i<25; i = i+4) {
             customList.add(i, 99);
             defaultList.add(i, 99);
         }
@@ -44,7 +44,28 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
 
-    //
+    @Test
+    public void test_addValueOnFirstIndex() {
+
+    }
+
+    @Test
+    public void test_addValueOnLastIndex() {
+
+    }
+
+    @Test
+    public void test_addValueOnIndexBiggerThanSize() {
+
+    }
+
+    @Test
+    public void test_addValueOnNegativeIndex() {
+
+    }
+
+
+
 
     @Test
     public void test_sizeOfList() {
@@ -82,12 +103,32 @@ class LinkedListTest {
         List<Integer> customList = initializeCustomList(numberElements);
         java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
-        for(int i=1; i<13; i = i+3) {
+        for(int i=12; i>0; i = i-3) {
             customList.remove(i);
             defaultList.remove(i);
         }
 
         assertEquals(defaultList.toString(), customList.toString());
+    }
+
+    @Test
+    public void test_removeLastElementByIndex() {
+
+    }
+
+    @Test
+    public void test_removeByIndexBiggerThanSize() {
+
+    }
+
+    @Test
+    public void test_removeByNegativeIndex() {
+
+    }
+
+    @Test
+    public void test_removeFirstElementByIndex() {
+
     }
 
     private List<Integer> initializeCustomList(int size) {
