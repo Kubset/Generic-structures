@@ -1,4 +1,4 @@
-package structures.linkedlist;
+package structures.List.linkedlist;
 
 public class Node<T> {
     private Node<T> previous;
