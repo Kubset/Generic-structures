@@ -80,7 +80,10 @@ class LinkedListTest {
 
     @Test
     public void test_addValueOnNegativeIndex() {
+        int numberElements = 3;
+        List<Integer> customList = initializeCustomList(numberElements);
 
+        assertThrows(IndexOutOfBoundsException.class, () -> customList.add(-5, -1));
     }
 
 
