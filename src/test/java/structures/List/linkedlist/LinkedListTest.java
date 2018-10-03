@@ -5,6 +5,8 @@ import structures.List.List;
 import structures.queue.Deque;
 
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
@@ -194,7 +196,9 @@ class LinkedListTest {
 
     @Test
     public void test_emptyPop() {
+        LinkedList<Integer> customList = new LinkedList<>();
 
+        assertThrows(NoSuchElementException.class, customList::pop);
     }
 
     @Test
