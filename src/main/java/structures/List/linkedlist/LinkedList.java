@@ -71,7 +71,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public void addFirst(T element) {
-
+        this.push(element);
     }
 
     public void addLast(T element) {
