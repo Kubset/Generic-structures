@@ -135,6 +135,14 @@ class LinkedListTest {
 
     @Test
     public void test_removeLastElementByIndex() {
+        int numberElements = 22;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
+
+        customList.remove(customList.size()-1);
+        defaultList.remove(defaultList.size()-1);
+
+        assertEquals(defaultList.toString(),customList.toString());
 
     }
 
