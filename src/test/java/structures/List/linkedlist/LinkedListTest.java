@@ -218,6 +218,16 @@ class LinkedListTest {
 
     @Test
     public void test_emptyPush() {
+        int numberElements = 4;
+        Integer elementToPush = 78;
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
+
+        customList.push(elementToPush);
+        defaultList.push(elementToPush);
+
+
+        assertEquals(defaultList.toString(), customList.toString());
 
     }
 
