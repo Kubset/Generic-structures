@@ -440,7 +440,11 @@ class LinkedListTest {
 
     @Test
     public void test_indexOfNotPresentElement() {
+        int numberElements = 5;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
 
+        assertEquals(defaultList.indexOf(-18), customList.indexOf(-18));
     }
 
     @Test
