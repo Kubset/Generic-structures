@@ -49,6 +49,10 @@ public class LinkedList<T> implements List<T> {
         return currentNode.getValue();
     }
 
+    public int size() {
+        return size;
+    }
+
 
     @Override
     public String toString() {
