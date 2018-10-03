@@ -401,7 +401,14 @@ class LinkedListTest {
 
     @Test
     public void test_containsNotPresentElement() {
+        int numberElements = 28;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
 
+        boolean defaultContains = defaultList.contains(-13);
+        boolean customContains = defaultList.contains(-13);
+
+        assertEquals(defaultContains, customContains);
     }
 
     @Test
