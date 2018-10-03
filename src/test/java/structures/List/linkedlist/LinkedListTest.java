@@ -31,9 +31,20 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
     @Test
-    public void test_addFewParametersInTheMiddleOfList() {
+    public void test_addFewValuesInTheMiddleOfList() {
+        int numberElements = 25;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
+        for(int i=0; i<25; i = i+4) {
+            customList.add(i, 99);
+            defaultList.add(i, 99);
+        }
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
+
+    
 
     private List<Integer> initializeCustomList(int size) {
        List<Integer> customList = new LinkedList<>();
