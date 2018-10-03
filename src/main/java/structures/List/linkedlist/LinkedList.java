@@ -1,6 +1,8 @@
-package structures.linkedlist;
+package structures.List.linkedlist;
 
-public class LinkedList<T> {
+import structures.List.List;
+
+public class LinkedList<T> implements List<T> {
 
     private Node<T> firstNode;
     private Node<T> lastNode;
@@ -50,7 +52,7 @@ public class LinkedList<T> {
             result.append(get(i));
             result.append(", ");
         }
-        result.substring(0, result.length()-1);
+        result.setLength(result.length()-2);
         result.append("]");
 
         return result.toString();
