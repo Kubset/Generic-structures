@@ -82,10 +82,12 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public T getFirst() {
+        checkGetFromList();
         return firstNode.getValue();
     }
 
     public T getLast() {
+        checkGetFromList();
         return lastNode.getValue();
     }
 
@@ -102,7 +104,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public T pop() {
-        if(size==0) throw new NoSuchElementException();
+        checkRemoveFromList();
         T firstValue = firstNode.getValue();
         firstNode = firstNode.getNext();
         size--;
@@ -135,5 +137,13 @@ public class LinkedList<T> implements List<T>, Deque<T> {
 
     private void checkElementIndex(int index) {
         if(index > size || index < 0) throw new IndexOutOfBoundsException();
+    }
+
+    private void checkRemoveFromList() {
+        if(size==0) throw new NoSuchElementException();
+    }
+
+    private void checkGetFromList() {
+        if(size==0) throw new IndexOutOfBoundsException();
     }
 }
