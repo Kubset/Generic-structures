@@ -53,6 +53,19 @@ public class LinkedList<T> implements List<T> {
         return size;
     }
 
+    public void remove(int index) {
+        Node<T> currentNode = firstNode;
+        if(index == 0) {
+            firstNode = firstNode.getNext();
+        } else {
+            for(int i=1; i<index; i++) {
+                currentNode = currentNode.getNext();
+            }
+            currentNode.setNext(currentNode.getNext().getNext());
+        }
+        size--;
+    }
+
 
     @Override
     public String toString() {
