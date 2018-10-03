@@ -299,12 +299,14 @@ class LinkedListTest {
     public void test_getFirstFromEmpty() {
         LinkedList<Integer> customList = new LinkedList<>();
 
-        assertThrows(IndexOutOfBoundsException.class, customList::getFirst);
+        assertThrows(NoSuchElementException.class, customList::getFirst);
     }
 
     @Test
     public void test_getLastFromEmpty() {
+        LinkedList<Integer> customList = new LinkedList<>();
 
+        assertThrows(NoSuchElementException.class, customList::getLast);
     }
 
     @Test
