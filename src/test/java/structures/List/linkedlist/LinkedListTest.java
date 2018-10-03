@@ -454,13 +454,16 @@ class LinkedListTest {
 
         customList.add(2,-20);
         customList.add(7,-20);
-        
+
         assertEquals(2, customList.indexOf(-20));
     }
 
     @Test
     public void test_indexOfEmptyList() {
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
+        assertEquals(defaultList.indexOf(300),customList.indexOf(300));
     }
 
     @Test
