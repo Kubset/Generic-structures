@@ -136,8 +136,15 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         size++;
     }
 
-    public T[] toArray() {
-        return null;
+    public Object[] toArray() {
+        Object[] resultArray = new Object[size];
+        Node<T> currentNode = firstNode;
+
+        for(int i=0; i<size; i++) {
+            resultArray[i] = currentNode.getValue();
+            currentNode = currentNode.getNext();
+        }
+        return resultArray;
     }
 
     @Override
