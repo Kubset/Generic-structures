@@ -468,6 +468,17 @@ class LinkedListTest {
 
     @Test
     public void test_toArray() {
+        int numberElements = 230;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        Object[] customArray = customList.toArray();
+        Object[] defaultArray = defaultList.toArray();
+
+        for(int i=0; i<numberElements; i++) {
+           assertEquals(defaultArray[i], customArray[i]);
+        }
+
 
     }
 
