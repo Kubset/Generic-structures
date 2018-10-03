@@ -44,6 +44,8 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
 
+    //
+
     @Test
     public void test_sizeOfList() {
         int numberElements = 25;
@@ -72,6 +74,20 @@ class LinkedListTest {
         customList.remove(5);
 
         assertEquals(defaultList.size(), customList.size());
+    }
+
+    @Test
+    public void test_removeFewElementsByIndex() {
+        int numberElements = 13;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
+
+        for(int i=1; i<13; i = i+3) {
+            customList.remove(i);
+            defaultList.remove(i);
+        }
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     private List<Integer> initializeCustomList(int size) {
