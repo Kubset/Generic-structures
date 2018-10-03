@@ -311,6 +311,18 @@ class LinkedListTest {
 
     @Test
     public void test_clearList() {
+        int numberElements = 222;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        customList.clear();
+        defaultList.clear();
+
+        assertAll(() -> {
+            assertEquals(defaultList.size(), customList.size());
+            assertEquals(defaultList.toString(), customList.toString());
+        });
+
 
     }
 
