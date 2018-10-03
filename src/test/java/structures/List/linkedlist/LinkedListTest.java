@@ -2,6 +2,7 @@ package structures.List.linkedlist;
 
 import org.junit.jupiter.api.Test;
 import structures.List.List;
+import structures.queue.Deque;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -177,6 +178,17 @@ class LinkedListTest {
 
     @Test
     public void test_pop() {
+        int numberElements = 33;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        Integer lastDefaultElement = defaultList.pop();
+        Integer lastCustomElement = customList.pop();
+
+        assertAll(()-> {
+            assertEquals(lastDefaultElement, lastCustomElement);
+            assertEquals(defaultList.size(), customList.size());
+        });
 
     }
 
@@ -285,8 +297,8 @@ class LinkedListTest {
 
     }
 
-    private List<Integer> initializeCustomList(int size) {
-       List<Integer> customList = new LinkedList<>();
+    private LinkedList<Integer> initializeCustomList(int size) {
+       LinkedList<Integer> customList = new LinkedList<>();
 
         for(int i=1; i<=size; i++) {
             customList.add(i);
@@ -294,8 +306,8 @@ class LinkedListTest {
         return customList;
     }
 
-    private java.util.List<Integer> initializeDefaultList(int size) {
-        java.util.List<Integer> defaultList = new java.util.LinkedList<>();
+    private java.util.LinkedList<Integer> initializeDefaultList(int size) {
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
          for(int i=1; i<=size; i++) {
             defaultList.add(i);
