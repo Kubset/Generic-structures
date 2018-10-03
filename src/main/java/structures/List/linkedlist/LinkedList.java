@@ -109,7 +109,16 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public int indexOf(T element) {
-        return 0;
+        int index = 0;
+        Node<T> currentNode = firstNode;
+        for(int i=0; i<size; i++) {
+            if(currentNode.getValue().equals(element)) {
+                return index;
+            }
+            currentNode = currentNode.getNext();
+            index++;
+        }
+        return -1;
     }
 
     public T pop() {
