@@ -92,7 +92,8 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public void clear() {
-
+        firstNode = lastNode = null;
+        size = 0;
     }
 
     public void contains(T element) {
@@ -125,6 +126,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
+        if(size == 0) return "[]";
         for(int i=0; i<size; i++) {
             result.append(get(i));
             result.append(", ");
