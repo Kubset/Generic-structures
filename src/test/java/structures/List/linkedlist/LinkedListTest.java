@@ -44,7 +44,16 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
 
-    
+    @Test
+    public void test_sizeOfList() {
+        int numberElements = 25;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
+
+        assertEquals(defaultList.size(), customList.size());
+        
+
+    }
 
     private List<Integer> initializeCustomList(int size) {
        List<Integer> customList = new LinkedList<>();
