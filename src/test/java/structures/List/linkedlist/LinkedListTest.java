@@ -297,7 +297,9 @@ class LinkedListTest {
 
     @Test
     public void test_getFirstFromEmpty() {
+        LinkedList<Integer> customList = new LinkedList<>();
 
+        assertThrows(IndexOutOfBoundsException.class, customList::getFirst);
     }
 
     @Test
