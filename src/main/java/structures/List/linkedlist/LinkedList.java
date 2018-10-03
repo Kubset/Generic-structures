@@ -22,6 +22,17 @@ public class LinkedList<T> {
 
     }
 
+    public void add(int index, T element) {
+        Node<T> currentNode = firstNode;
+        for(int i=0; i<index; i++) {
+            currentNode = currentNode.getNext();
+        }
+        Node<T> newNode = new Node<>(element);
+        newNode.setNext(currentNode.getNext());
+        currentNode.setNext(newNode);
+
+    }
+
     public T get(int index) {
         Node<T> currentNode = firstNode;
         for(int i=0; i<index; i++) {
@@ -32,4 +43,16 @@ public class LinkedList<T> {
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[");
+        for(int i=0; i<size; i++) {
+            result.append(get(i));
+            result.append(", ");
+        }
+        result.substring(0, result.length()-1);
+        result.append("]");
+
+        return result.toString();
+    }
 }
