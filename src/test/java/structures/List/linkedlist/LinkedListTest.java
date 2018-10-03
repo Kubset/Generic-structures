@@ -57,9 +57,21 @@ class LinkedListTest {
     public void test_sizeOfEmptyList() {
         List<Integer> customList = new LinkedList<>();
         java.util.List<Integer> defaultList = new java.util.LinkedList<>();
-        
+
         assertEquals(defaultList.size(), customList.size());
 
+    }
+
+    @Test
+    public void test_sizeOfListAfterRemove() {
+        int numberElements = 33;
+        List<Integer> customList = initializeCustomList(numberElements);
+        java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
+
+        defaultList.remove(5);
+        customList.remove(5);
+
+        assertEquals(defaultList.size(), customList.size());
     }
 
     private List<Integer> initializeCustomList(int size) {
