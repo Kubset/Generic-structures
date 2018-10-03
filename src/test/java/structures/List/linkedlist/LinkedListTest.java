@@ -449,7 +449,13 @@ class LinkedListTest {
 
     @Test
     public void test_IndexOfPresentMoreThanOneElement() {
+        int numberElements = 22;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
 
+        customList.add(2,-20);
+        customList.add(7,-20);
+        
+        assertEquals(2, customList.indexOf(-20));
     }
 
     @Test
