@@ -175,6 +175,116 @@ class LinkedListTest {
         assertEquals(defaultList.toString(), customList.toString());
     }
 
+    @Test
+    public void test_pop() {
+
+    }
+
+    @Test
+    public void test_emptyPop() {
+
+    }
+
+    @Test
+    public void test_push() {
+
+    }
+
+    @Test
+    public void test_emptyPush() {
+
+    }
+
+    @Test
+    public void test_addFirst() {
+
+    }
+
+    @Test
+    public void test_addFirstToEmpty() {
+
+    }
+
+    @Test
+    public void test_addLast() {
+
+    }
+
+    @Test
+    public void test_addLastToEmpty() {
+
+    }
+
+    @Test
+    public void test_getFirst() {
+
+    }
+
+    @Test
+    public void test_getFirstFromEmpty() {
+
+    }
+
+    @Test
+    public void test_getLastFromEmpty() {
+
+    }
+
+    @Test
+    public void test_clearList() {
+
+    }
+
+    @Test
+    public void test_clearEmptyList() {
+
+    }
+
+    @Test
+    public void test_containsPresentElement() {
+
+    }
+
+    @Test
+    public void test_containsNotPresentElement() {
+
+    }
+
+    @Test
+    public void test_containsEmptyList() {
+
+    }
+
+    @Test
+    public void test_indexOfPresentElement() {
+
+    }
+
+    @Test
+    public void test_indexOfNotPresentElement() {
+
+    }
+
+    @Test
+    public void test_IndexOfPresentMoreThanOneElement() {
+
+    }
+
+    @Test
+    public void test_indexOfEmptyList() {
+
+    }
+
+    @Test
+    public void test_toArray() {
+
+    }
+
+    @Test
+    public void test_toArrayFromEmpty() {
+
+    }
+
     private List<Integer> initializeCustomList(int size) {
        List<Integer> customList = new LinkedList<>();
 
