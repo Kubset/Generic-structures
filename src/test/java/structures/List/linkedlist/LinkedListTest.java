@@ -51,7 +51,14 @@ class LinkedListTest {
         java.util.List<Integer> defaultList = initializeDefaultList(numberElements);
 
         assertEquals(defaultList.size(), customList.size());
+    }
+
+    @Test
+    public void test_sizeOfEmptyList() {
+        List<Integer> customList = new LinkedList<>();
+        java.util.List<Integer> defaultList = new java.util.LinkedList<>();
         
+        assertEquals(defaultList.size(), customList.size());
 
     }
 
