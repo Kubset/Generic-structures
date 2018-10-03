@@ -24,10 +24,10 @@ public class LinkedList<T> implements List<T> {
 
     }
 
-    public void add(int index, T element) throws IndexOutOfBoundsException{
+    public void add(int index, T element) {
+        checkElementIndex(index);
         Node<T> currentNode = firstNode;
         Node<T> newNode = new Node<>(element);
-        if(index > size || index < 0) throw new IndexOutOfBoundsException();
         if(index == 0) {
             newNode.setNext(firstNode);
             firstNode = newNode;
@@ -40,6 +40,7 @@ public class LinkedList<T> implements List<T> {
         }
         size++;
     }
+
 
     public T get(int index) {
         Node<T> currentNode = firstNode;
@@ -55,6 +56,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     public void remove(int index) {
+        checkElementIndex(index);
         Node<T> currentNode = firstNode;
         if(index == 0) {
             firstNode = firstNode.getNext();
@@ -79,5 +81,9 @@ public class LinkedList<T> implements List<T> {
         result.append("]");
 
         return result.toString();
+    }
+
+    private void checkElementIndex(int index) {
+        if(index > size || index < 0) throw new IndexOutOfBoundsException();
     }
 }
