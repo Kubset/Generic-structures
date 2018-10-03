@@ -107,7 +107,10 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public void push(T element) {
-
+        Node<T> newNode = new Node<T>(element);
+        newNode.setNext(firstNode);
+        firstNode = newNode;
+        size++;
     }
 
     public T[] toArray() {
