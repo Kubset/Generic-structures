@@ -82,7 +82,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
     }
 
     public T getFirst() {
-        return null;
+        return firstNode.getValue();
     }
 
     public T getLast() {
