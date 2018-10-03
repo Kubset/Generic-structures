@@ -1,8 +1,9 @@
 package structures.List.linkedlist;
 
 import structures.List.List;
+import structures.queue.Deque;
 
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements List<T>, Deque<T> {
 
     private Node<T> firstNode;
     private Node<T> lastNode;
@@ -96,7 +97,10 @@ public class LinkedList<T> implements List<T> {
     }
 
     public T pop() {
-        return null;
+        T firstValue = firstNode.getValue();
+        firstNode = firstNode.getNext();
+        size--;
+        return firstValue;
     }
 
     public void push(T element) {
