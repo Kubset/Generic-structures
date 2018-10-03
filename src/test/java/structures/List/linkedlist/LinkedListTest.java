@@ -335,7 +335,13 @@ class LinkedListTest {
 
     @Test
     public void test_clearEmptyList() {
+        LinkedList<Integer> customList = new LinkedList<>();
+        java.util.LinkedList<Integer> defaultList = new java.util.LinkedList<>();
 
+        customList.clear();
+        defaultList.clear();
+
+        assertEquals(defaultList.toString(),customList.toString());
     }
 
     @Test
