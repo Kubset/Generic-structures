@@ -381,6 +381,21 @@ class LinkedListTest {
 
     @Test
     public void test_containsPresentElementOnLastPlace() {
+        int numberElements = 38;
+        Integer expectedElement = -10;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        customList.add(expectedElement);
+        defaultList.add(expectedElement);
+
+        boolean defaultContains = defaultList.contains(expectedElement);
+        boolean customContains = defaultList.contains(expectedElement);
+
+        assertAll(() -> {
+            assertEquals(defaultContains, customContains);
+            assertEquals(defaultList.toString(), customList.toString());
+        });
 
     }
 
