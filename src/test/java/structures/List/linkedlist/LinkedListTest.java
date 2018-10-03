@@ -346,6 +346,17 @@ class LinkedListTest {
 
     @Test
     public void test_containsPresentElement() {
+        int numberElements = 20;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        boolean defaultContains = defaultList.contains(10);
+        boolean customContains = defaultList.contains(10);
+
+        assertAll(() -> {
+            assertEquals(defaultContains, customContains);
+            assertEquals(defaultList.toString(), customList.toString());
+        });
 
     }
 
