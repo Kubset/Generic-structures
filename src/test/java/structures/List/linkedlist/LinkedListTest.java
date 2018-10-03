@@ -233,7 +233,15 @@ class LinkedListTest {
 
     @Test
     public void test_addFirst() {
+        int numberElements = 2;
+        Integer elementToAdd = 66;
+        LinkedList<Integer> customList = initializeCustomList(22);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(22);
 
+        customList.addFirst(elementToAdd);
+        defaultList.addFirst(elementToAdd);
+
+        assertEquals(defaultList.toString(), customList.toString());
     }
 
     @Test
