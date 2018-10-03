@@ -66,11 +66,15 @@ class LinkedListTest {
         defaultList.add(defaultList.size(), -1);
 
         assertEquals(defaultList.toString(), customList.toString());
-
     }
 
     @Test
     public void test_addValueOnIndexBiggerThanSize() {
+        int numberElements = 7;
+        List<Integer> customList = initializeCustomList(numberElements);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> customList.add(customList.size()+5, -1));
+
 
     }
 
