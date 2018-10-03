@@ -96,7 +96,15 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         size = 0;
     }
 
-    public void contains(T element) {
+    public boolean contains(T element) {
+        Node<T> currentNode = firstNode;
+        for(int i=0; i<size; i++) {
+            if(currentNode.getValue().equals(element)) {
+                return true;
+            }
+            currentNode = currentNode.getNext();
+        }
+        return false;
 
     }
 
