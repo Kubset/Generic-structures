@@ -8,7 +8,6 @@ public class LinkedList<T> implements List<T> {
     private Node<T> lastNode;
     private int size;
 
-
     public LinkedList() {
         this.size = 0;
     }
@@ -41,7 +40,6 @@ public class LinkedList<T> implements List<T> {
         size++;
     }
 
-
     public T get(int index) {
         Node<T> currentNode = firstNode;
         for(int i=0; i<index; i++) {
@@ -69,6 +67,45 @@ public class LinkedList<T> implements List<T> {
         size--;
     }
 
+    public void addFirst(T element) {
+
+    }
+
+    public void addLast(T element) {
+
+    }
+
+    public T getFirst() {
+        return null;
+    }
+
+    public T getLast() {
+        return null;
+    }
+
+    public void clear() {
+
+    }
+
+    public void contains(T element) {
+
+    }
+
+    public int indexOf(T element) {
+        return 0;
+    }
+
+    public T pop() {
+        return null;
+    }
+
+    public void push(T element) {
+
+    }
+
+    public T[] toArray() {
+        return null;
+    }
 
     @Override
     public String toString() {
