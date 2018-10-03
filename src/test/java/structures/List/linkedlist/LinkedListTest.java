@@ -361,6 +361,30 @@ class LinkedListTest {
     }
 
     @Test
+    public void test_containsPresentElementOnFirstPlace() {
+        int numberElements = 22;
+        LinkedList<Integer> customList = initializeCustomList(numberElements);
+        java.util.LinkedList<Integer> defaultList = initializeDefaultList(numberElements);
+
+        customList.add(0,-12);
+        defaultList.add(0,-12);
+
+        boolean defaultContains = defaultList.contains(-12);
+        boolean customContains = defaultList.contains(-12);
+
+        assertAll(() -> {
+            assertEquals(defaultContains, customContains);
+            assertEquals(defaultList.toString(), customList.toString());
+        });
+
+    }
+
+    @Test
+    public void test_containsPresentElementOnLastPlace() {
+
+    }
+
+    @Test
     public void test_containsNotPresentElement() {
 
     }
