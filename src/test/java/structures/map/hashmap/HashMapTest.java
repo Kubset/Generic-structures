@@ -1,4 +1,4 @@
-package structures.hashmap;
+package structures.map.hashmap;
 
 import org.junit.jupiter.api.Test;
 
