@@ -1,10 +1,12 @@
 package structures.queue;
 
-public interface Deque<T> {
-    public void addFirst(T element);
-    public void addLast(T element);
-    public T getFirst();
-    public T getLast();
-    public T pop();
-    public void push(T element);
+public interface Deque<E> {
+    public void add(E element);
+    public void addFirst(E element);
+    public void addLast(E element);
+    public E getFirst();
+    public E getLast();
+    public E pop();
+    public void push(E element);
+    public boolean contains(E element);
 }
