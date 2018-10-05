@@ -1,44 +1,44 @@
 package structures.List.linkedlist;
 
-public class Node<T> {
-    private Node<T> previous;
-    private Node<T> next;
-    private T value;
+public class Node<E> {
+    private Node<E> previous;
+    private Node<E> next;
+    private E value;
 
     public Node() {
     }
 
-    public Node(Node<T> previous, Node<T> next, T value) {
+    public Node(Node<E> previous, Node<E> next, E value) {
         this.previous = previous;
         this.next = next;
         this.value = value;
     }
 
-    public Node(T value) {
+    public Node(E value) {
         this.value = value;
     }
 
-    public Node<T> getPrevious() {
+    public Node<E> getPrevious() {
         return previous;
     }
 
-    public void setPrevious(Node<T> previous) {
+    public void setPrevious(Node<E> previous) {
         this.previous = previous;
     }
 
-    public Node<T> getNext() {
+    public Node<E> getNext() {
         return next;
     }
 
-    public void setNext(Node<T> next) {
+    public void setNext(Node<E> next) {
         this.next = next;
     }
 
-    public T getValue() {
+    public E getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(E value) {
         this.value = value;
     }
 }

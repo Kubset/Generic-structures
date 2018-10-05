@@ -1,13 +1,18 @@
-package structures.hashmap;
+package structures.map.hashmap;
 
-import java.util.*;
+//import java.util.*;
 
-public class HashMap<K,V> {
+import structures.List.linkedlist.LinkedList;
+import structures.map.Map;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashMap<K,V> implements Map<K,V> {
     public int bucketSize;
     private float loadFactor;
     private LinkedList<KeyValue<K,V>>[] elements;
     private int size;
-
 
     public HashMap() {
         size = 0;
@@ -37,6 +42,7 @@ public class HashMap<K,V> {
     public boolean isEmpty() {
         return size == 0;
     }
+
 
 
 
@@ -176,5 +182,20 @@ public class HashMap<K,V> {
             temp[position].add(keyValue);
        }
        elements = temp;
+    }
+
+    @Override
+    public String toString() {
+        if(keySet().size() == 0) return "{}";
+        StringBuilder result = new StringBuilder("{");
+        for(K element: keySet()) {
+            result.append(element);
+            result.append("=");
+            result.append(get(element));
+            result.append(", ");
+        }
+        result.setLength(result.length()-2);
+        result.append("}");
+        return result.toString();
     }
 }

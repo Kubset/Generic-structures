@@ -1,4 +1,4 @@
-package structures.hashmap;
+package structures.map.hashmap;
 
 public class KeyValue<K,V> {
     private K key;
