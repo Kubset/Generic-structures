@@ -78,7 +78,16 @@ class HashMapTest {
     }
     @Test
     public void test_removeFromEmptyMap() {
+        HashMap<Integer, Integer> customMap = new HashMap<>();
+        java.util.HashMap<Integer,Integer> defaultMap = new java.util.HashMap<>();
 
+        defaultMap.remove(222);
+        customMap.remove(222);
+
+        assertAll(() -> {
+            assertEquals(defaultMap.size(), customMap.size());
+            assertEquals(defaultMap.toString(), customMap.toString());
+        });
     }
 
     @Test
