@@ -3,19 +3,20 @@ package structures.List.linkedlist;
 import structures.List.List;
 import structures.queue.Deque;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedList<T> implements List<T>, Deque<T> {
+public class LinkedList<E> implements List<E>, Deque<E>, Iterable<E> {
 
-    private Node<T> firstNode;
-    private Node<T> lastNode;
+    private Node<E> firstNode;
+    private Node<E> lastNode;
     private int size;
 
     public LinkedList() {
         this.size = 0;
     }
 
-    public void add(T element) {
+    public void add(E element) {
         if(size == 0) {
             firstNode = lastNode = new Node<>(element);
         } else {
@@ -26,10 +27,10 @@ public class LinkedList<T> implements List<T>, Deque<T> {
 
     }
 
-    public void add(int index, T element) {
+    public void add(int index, E element) {
         checkElementIndex(index);
-        Node<T> currentNode = firstNode;
-        Node<T> newNode = new Node<>(element);
+        Node<E> currentNode = firstNode;
+        Node<E> newNode = new Node<>(element);
         if(index == 0) {
             newNode.setNext(firstNode);
             firstNode = newNode;
@@ -43,8 +44,8 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         size++;
     }
 
-    public T get(int index) {
-        Node<T> currentNode = firstNode;
+    public E get(int index) {
+        Node<E> currentNode = firstNode;
         for(int i=0; i<index; i++) {
             currentNode = currentNode.getNext();
 
@@ -58,7 +59,7 @@ public class LinkedList<T> implements List<T>, Deque<T> {
 
     public void remove(int index) {
         checkElementIndex(index);
-        Node<T> currentNode = firstNode;
+        Node<E> currentNode = firstNode;
         if(index == 0) {
             firstNode = firstNode.getNext();
         } else {
@@ -70,23 +71,23 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         size--;
     }
 
-    public void addFirst(T element) {
+    public void addFirst(E element) {
         this.push(element);
     }
 
-    public void addLast(T element) {
-        Node<T> newNode = new Node<T>(element);
+    public void addLast(E element) {
+        Node<E> newNode = new Node<E>(element);
         lastNode.setNext(newNode);
         lastNode = lastNode.getNext();
         size++;
     }
 
-    public T getFirst() {
+    public E getFirst() {
         checkEmptyList();
         return firstNode.getValue();
     }
 
-    public T getLast() {
+    public E getLast() {
         checkEmptyList();
         return lastNode.getValue();
     }
@@ -96,8 +97,8 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         size = 0;
     }
 
-    public boolean contains(T element) {
-        Node<T> currentNode = firstNode;
+    public boolean contains(E element) {
+        Node<E> currentNode = firstNode;
         for(int i=0; i<size; i++) {
             if(currentNode.getValue().equals(element)) {
                 return true;
@@ -108,9 +109,9 @@ public class LinkedList<T> implements List<T>, Deque<T> {
 
     }
 
-    public int indexOf(T element) {
+    public int indexOf(E element) {
         int index = 0;
-        Node<T> currentNode = firstNode;
+        Node<E> currentNode = firstNode;
         for(int i=0; i<size; i++) {
             if(currentNode.getValue().equals(element)) {
                 return index;
@@ -121,16 +122,16 @@ public class LinkedList<T> implements List<T>, Deque<T> {
         return -1;
     }
 
-    public T pop() {
+    public E pop() {
         checkEmptyList();
-        T firstValue = firstNode.getValue();
+        E firstValue = firstNode.getValue();
         firstNode = firstNode.getNext();
         size--;
         return firstValue;
     }
 
-    public void push(T element) {
-        Node<T> newNode = new Node<T>(element);
+    public void push(E element) {
+        Node<E> newNode = new Node<E>(element);
         newNode.setNext(firstNode);
         firstNode = newNode;
         size++;
@@ -138,13 +139,18 @@ public class LinkedList<T> implements List<T>, Deque<T> {
 
     public Object[] toArray() {
         Object[] resultArray = new Object[size];
-        Node<T> currentNode = firstNode;
+        Node<E> currentNode = firstNode;
 
         for(int i=0; i<size; i++) {
             resultArray[i] = currentNode.getValue();
             currentNode = currentNode.getNext();
         }
         return resultArray;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListIterator<>(this);
     }
 
     @Override
