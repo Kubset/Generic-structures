@@ -22,12 +22,14 @@
 - pop()
 - push()
 - toArray()
+- iterator()
 
 ##### efficiency of algorithms O(N):
 - add element front/back O(1)
 - remove element front/back 0(1)
 - add element to specified index 0(n)
 - remove element on specified index O(n)
+- remove element on specified index by iterator O(1)
 - get O(n)
 - contains O(n)
 
@@ -55,4 +57,6 @@ There are 40 tests and 100% code coverage
 
 
 ##### Tests:
-There are 17 tests and 100% code coverage
+Almost all tests are based on original implementation of HashMap
+There are 21 tests and 100% code coverage
+
