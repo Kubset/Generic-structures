@@ -183,4 +183,19 @@ public class HashMap<K,V> implements Map<K,V> {
        }
        elements = temp;
     }
+
+    @Override
+    public String toString() {
+        if(keySet().size() == 0) return "{}";
+        StringBuilder result = new StringBuilder("{");
+        for(K element: keySet()) {
+            result.append(element);
+            result.append("=");
+            result.append(get(element));
+            result.append(", ");
+        }
+        result.setLength(result.length()-2);
+        result.append("}");
+        return result.toString();
+    }
 }
