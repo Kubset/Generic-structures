@@ -10,69 +10,96 @@ import static org.junit.jupiter.api.Assertions.*;
 class HashMapTest {
 
     @Test
-    protected void test_addFewElementsToHashMap() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        hm.put(11,22);
-        hm.put(10,1);
-        hm.put(2,4);
-        hm.put(3,222);
+    protected void test_addFewElementsToEmptyHashMap() {
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
 
         assertAll(() -> {
-            assertEquals(new Integer(22), hm.get(11));
-            assertEquals(new Integer(1), hm.get(10));
-            assertEquals(new Integer(4), hm.get(2));
-            assertEquals(new Integer(222), hm.get(3));
-                });
+            assertEquals(defaultMap.get(2), customMap.get(2));
+            assertEquals(defaultMap.get(4), customMap.get(4));
+            assertEquals(defaultMap.get(7), customMap.get(7));
+            assertEquals(defaultMap.get(9), customMap.get(9));
+            assertEquals(defaultMap.get(1), customMap.get(1));
+        });
     }
 
     @Test
-    protected void test_increaseSize() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
-        int size = hm.size();
-        hm.put(10,1);
-        hm.put(71,4);
-        hm.put(83,222);
-        int increasedSize = hm.size();
+    public void test_addFewElementsToImplementedMap() {
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        customMap.put(100,0);
+        customMap.put(90,0);
+        defaultMap.put(100,0);
+        defaultMap.put(90,0);
 
          assertAll(() -> {
-            assertEquals(6, size);
-            assertEquals(8, increasedSize);
+            assertEquals(mapSize+2, customMap.size());
+            assertEquals(defaultMap.toString(), customMap.toString());
                 });
     }
 
     @Test
-    protected void test_reduceSize() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
-        int size = hm.size();
-        hm.remove(10);
-        hm.remove(2);
-        int reducedSize = hm.size();
+    public void test_removeFewElements() {
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        defaultMap.remove(2);
+        defaultMap.remove(8);
+        customMap.remove(2);
+        customMap.remove(8);
 
         assertAll(() -> {
-            assertEquals(6, size);
-            assertEquals(4, reducedSize);
+            assertEquals(defaultMap.size(), customMap.size());
+            assertEquals(defaultMap.toString(), customMap.toString());
         });
 
     }
 
     @Test
+    public void test_removeNotPresentElement() {
+
+    }
+    @Test
+    public void test_removeFromEmptyMap() {
+
+    }
+
+    @Test
+    public void test_toStringMethod() {
+
+    }
+
+    @Test
+    public void test_toStringOnEmptyMap() {
+
+    }
+
+    @Test
     protected void test_cleanMap() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int mapSize = 12;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
-        hm.clear();
+        customMap.clear();
 
-        assertEquals(0, hm.size());
+        assertAll(() -> {
+            assertEquals(0, customMap.size());
+            assertEquals("{}", customMap.toString());
+        });
 
     }
 
     @Test
     protected void test_isEmpty() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
-        boolean notEmpty = hm.isEmpty();
-        hm.clear();
-        boolean empty = hm.isEmpty();
-
+        boolean notEmpty = customMap.isEmpty();
+        customMap.clear();
+        boolean empty = customMap.isEmpty();
 
         assertAll(() -> {
             assertTrue(empty);
@@ -82,181 +109,202 @@ class HashMapTest {
 
     @Test
     protected void test_returnKeySet() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
 
-        Set<Integer> result = hm.keySet();
-        Set<Integer> expected = new HashSet<>(Arrays.asList(10,2,3,100,0,22));
-
-        assertEquals(expected, result);
+        assertEquals(defaultMap.keySet(), customMap.keySet());
     }
+
 
     @Test
     protected void test_returnEmptyKeySet() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        int mapSize = 22;
+        HashMap<Integer, Integer> customMap = new HashMap<>();
+        java.util.HashMap<Integer,Integer> defaultMap = new java.util.HashMap<>();
 
-        Set<Integer> emptySet = new HashSet<>();
-
-        assertEquals(emptySet, hm.keySet());
+        assertEquals(defaultMap.keySet(), customMap.keySet());
     }
 
     @Test
     protected void test_returnValues() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
+        int mapSize = 4;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        Set<Integer> expectedSet = new HashSet<>();
+        expectedSet.add(0);
+        expectedSet.add(1);
+        expectedSet.add(2);
+        expectedSet.add(3);
 
-        Set<Integer> result = hm.values();
-        Set<Integer> expected = new HashSet<>(Arrays.asList(1,4,222,12,422,2222));
 
-        assertEquals(expected, result);
-    }
+        assertEquals(expectedSet, customMap.values());
+ }
 
     @Test
     protected void test_returnEmptyValues() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        HashMap<Integer, Integer> customMap = new HashMap<>();
+        Set<Integer> expectedSet = new HashSet<>();
 
-        Set<Integer> emptySet = new HashSet<>();
-
-        assertEquals(emptySet, hm.values());
+        assertEquals(expectedSet, customMap.values());
     }
 
     @Test
-    protected void test_containsKey() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
-
-        boolean notPresentKey = hm.containsKey(1234567);
-        boolean presentKey = hm.containsKey(10);
+    protected void test_containsPresentKey() {
+        int mapSize = 11;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
         assertAll(() -> {
-            assertTrue(presentKey);
-            assertFalse(notPresentKey);
+            assertTrue(customMap.containsKey(2));
+            assertTrue(customMap.containsKey(5));
+            assertTrue(customMap.containsKey(7));
+            assertTrue(customMap.containsKey(1));
         });
+    }
+
+    @Test
+    public void test_ContainsNoPresentKey() {
 
     }
 
     @Test
-    protected void containsValue() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
+    protected void test_containsPresentValue() {
+         int mapSize = 11;
+         HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
-        boolean notPresentValue = hm.containsValue(1234567);
-        boolean presentValue = hm.containsValue(222);
+         assertAll(() -> {
+            assertTrue(customMap.containsValue(2));
+            assertTrue(customMap.containsValue(5));
+            assertTrue(customMap.containsValue(7));
+            assertTrue(customMap.containsValue(1));
+         });
+    }
 
-        assertAll(() -> {
-            assertTrue(presentValue);
-            assertFalse(notPresentValue);
-        });
+    @Test
+    protected void test_containsNoPresentValue() {
 
     }
 
     @Test
     protected void test_putToPresentKey() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
-        int size = hm.size();
+        int mapSize = 8;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
-        hm.put(10,222);
+        customMap.put(5, 111);
+        customMap.put(1,999);
+
+        assertAll(() -> {
+            assertTrue(customMap.containsValue(111));
+            assertTrue(customMap.containsValue(999));
+            assertEquals(mapSize, customMap.size());
+        });
+    }
+
+    @Test
+    protected void test_removeAbsentKey() {
+        int mapSize = 5;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        customMap.remove(111);
 
 
         assertAll(() -> {
-            assertEquals(size, hm.size());
-            assertEquals(new Integer(222), hm.get(10));
+            assertEquals(defaultMap.size(), customMap.size());
+            assertEquals(defaultMap.toString(), customMap.toString());
         });
 
     }
 
     @Test
-    protected void test_removeAbsentKey() {
-        HashMap<Integer, Integer> hm = produceFilledHashMap();
-        int size = hm.size();
-
-        hm.remove(9999);
-
-        assertEquals(size, hm.size());
-    }
-
-    @Test
     protected void test_increaseBucketSize() throws IllegalAccessException, NoSuchFieldException {
-        HashMap<Integer, Integer> hm = produceFilledHashMap(1000);
-        Field f = hm.getClass().getDeclaredField("bucketSize");
+        int mapSize = 1200;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        Field f = customMap.getClass().getDeclaredField("bucketSize");
         f.setAccessible(true);
-        int bucketSize = (int) f.get(hm);
+        int customBucketSize = (int) f.get(customMap);
 
-        assertEquals(2048, bucketSize);
-    }
+        Field f2 = defaultMap.getClass().getDeclaredField("table");
+        f2.setAccessible(true);
+        Object[] defaultBucketSize = (Object[]) f2.get(defaultMap);
 
-    @Test
-    protected void test_reduceBucketSize() throws IllegalAccessException, NoSuchFieldException {
-        HashMap<Integer, Integer> hm = produceFilledHashMap(2);
-        Field f = hm.getClass().getDeclaredField("bucketSize");
-        f.setAccessible(true);
-        int bucketSize = (int) f.get(hm);
 
-        assertEquals(4, bucketSize);
+        assertEquals(defaultBucketSize.length, customBucketSize);
+
     }
 
     @Test
     protected void test_increaseBucketSizeWithCustomLoadFactor() throws IllegalAccessException, NoSuchFieldException {
-        HashMap<Integer, Integer> hm = produceFilledHashMap(250, 0.5F);
-        Field f = hm.getClass().getDeclaredField("bucketSize");
+        int mapSize = 516;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize, 0.5f);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize, 0.5f);
+
+        Field f = customMap.getClass().getDeclaredField("bucketSize");
         f.setAccessible(true);
-        int bucketSize = (int) f.get(hm);
+        int customBucketSize = (int) f.get(customMap);
 
-        assertEquals(512, bucketSize);
-    }
-
-    @Test
-    protected void test_reduceBucketSizeWithCustomLoadFactor() throws IllegalAccessException, NoSuchFieldException {
-        HashMap<Integer, Integer> hm = produceFilledHashMap(4, 1.1F);
-        Field f = hm.getClass().getDeclaredField("bucketSize");
-        f.setAccessible(true);
-        int bucketSize = (int) f.get(hm);
-
-        assertEquals(4, bucketSize);
-    }
+        Field f2 = defaultMap.getClass().getDeclaredField("table");
+        f2.setAccessible(true);
+        Object[] defaultBucketSize = (Object[]) f2.get(defaultMap);
 
 
-    private HashMap<Integer, Integer> produceFilledHashMap() {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        hm.put(10,1);
-        hm.put(2,4);
-        hm.put(3,222);
-        hm.put(100,12);
-        hm.put(0,422);
-        hm.put(22,2222);
-        return hm;
-    }
+        assertEquals(defaultBucketSize.length, customBucketSize);
+   }
 
-    private HashMap<Integer, Integer> produceFilledHashMap(int size) {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        List<Integer> keys = new ArrayList<>();
-        List<Integer> values = new ArrayList<>();
-        initialize(keys, size);
-        initialize(values, size);
-
-        for(int i=0 ;i<size; i++) {
-            hm.put(keys.get(i), values.get(i));
+    private HashMap<Integer, Integer> initializeCustomHashMap(int size) {
+        List<Integer> keys = initializeList(size);
+        List<Integer> values = initializeList(size);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<size; i++) {
+           map.put(keys.get(i), values.get(i));
         }
 
-        return hm;
+        return map;
     }
 
-    private HashMap<Integer, Integer> produceFilledHashMap(int size, float loadFactor) {
-        HashMap<Integer, Integer> hm = new HashMap<>(16,loadFactor);
-        List<Integer> keys = new ArrayList<>();
-        List<Integer> values = new ArrayList<>();
-        initialize(keys, size);
-        initialize(values, size);
-
-        for(int i=0 ;i<size; i++) {
-            hm.put(keys.get(i), values.get(i));
+    private HashMap<Integer, Integer> initializeCustomHashMap(int size, float loadFactor) {
+        List<Integer> keys = initializeList(size);
+        List<Integer> values = initializeList(size);
+        HashMap<Integer, Integer> map = new HashMap<>(16,loadFactor);
+        for(int i=0; i<size; i++) {
+           map.put(keys.get(i), values.get(i));
         }
 
-        return hm;
+        return map;
+    }
+
+    private java.util.HashMap<Integer, Integer> initializeDefaultHashMap(int size, float loadFactor) {
+        List<Integer> keys = initializeList(size);
+        List<Integer> values = initializeList(size);
+        java.util.HashMap<Integer, Integer> map = new java.util.HashMap<>(16, loadFactor);
+        for(int i=0; i<size; i++) {
+           map.put(keys.get(i), values.get(i));
+        }
+
+        return map;
+
+    }
+
+    private java.util.HashMap<Integer, Integer> initializeDefaultHashMap(int size) {
+        List<Integer> keys = initializeList(size);
+        List<Integer> values = initializeList(size);
+        java.util.HashMap<Integer, Integer> map = new java.util.HashMap<>();
+        for(int i=0; i<size; i++) {
+           map.put(keys.get(i), values.get(i));
+        }
+
+        return map;
+
     }
 
 
-    public static void initialize(List<Integer> list, int size) {
-       Random rand = new Random();
-       for(int i=0; i<size; i++) {
-           list.add(rand.nextInt(10000000));
-       }
+    private List<Integer> initializeList(int size) {
+        List<Integer> result = new ArrayList<>();
+        for(int i=0; i<size; i++) {
+           result.add(i);
+        }
+        return result;
     }
 
 }
