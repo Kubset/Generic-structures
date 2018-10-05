@@ -186,6 +186,7 @@ public class HashMap<K,V> implements Map<K,V> {
 
     @Override
     public String toString() {
+        if(keySet().size() == 0) return "{}";
         StringBuilder result = new StringBuilder("{");
         for(K element: keySet()) {
             result.append(element);
