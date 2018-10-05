@@ -194,6 +194,15 @@ class HashMapTest {
 
     @Test
     public void test_ContainsNoPresentKey() {
+        int mapSize = 14;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+
+        assertAll(() -> {
+            assertFalse(customMap.containsKey(14));
+            assertFalse(customMap.containsKey(17));
+            assertFalse(customMap.containsKey(222));
+            assertFalse(customMap.containsKey(111));
+        });
 
     }
 
