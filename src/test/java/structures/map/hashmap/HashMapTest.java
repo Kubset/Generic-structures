@@ -221,7 +221,15 @@ class HashMapTest {
 
     @Test
     protected void test_containsNoPresentValue() {
+         int mapSize = 7;
+         HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
 
+         assertAll(() -> {
+            assertFalse(customMap.containsValue(20));
+            assertFalse(customMap.containsValue(55));
+            assertFalse(customMap.containsValue(73));
+            assertFalse(customMap.containsValue(11));
+         });
     }
 
     @Test
