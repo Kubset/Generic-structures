@@ -25,6 +25,21 @@ class HashMapTest {
     }
 
     @Test
+    public void test_toStringMethod() {
+        int mapSize = 388;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        assertEquals(defaultMap.toString(), customMap.toString());
+    }
+
+    @Test
+    public void test_toStringOnEmptyMap() {
+
+    }
+
+
+    @Test
     public void test_addFewElementsToImplementedMap() {
         int mapSize = 22;
         HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
@@ -90,15 +105,6 @@ class HashMapTest {
         });
     }
 
-    @Test
-    public void test_toStringMethod() {
-
-    }
-
-    @Test
-    public void test_toStringOnEmptyMap() {
-
-    }
 
     @Test
     protected void test_cleanMap() {
