@@ -61,6 +61,19 @@ class HashMapTest {
 
     @Test
     public void test_removeNotPresentElement() {
+        int mapSize = 17;
+        HashMap<Integer, Integer> customMap = initializeCustomHashMap(mapSize);
+        java.util.HashMap<Integer,Integer> defaultMap = initializeDefaultHashMap(mapSize);
+
+        defaultMap.remove(222);
+        defaultMap.remove(123);
+        customMap.remove(123);
+        customMap.remove(222);
+
+        assertAll(() -> {
+            assertEquals(defaultMap.size(), customMap.size());
+            assertEquals(defaultMap.toString(), customMap.toString());
+        });
 
     }
     @Test
