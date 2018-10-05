@@ -35,7 +35,10 @@ class HashMapTest {
 
     @Test
     public void test_toStringOnEmptyMap() {
+        HashMap<Integer, Integer> customMap = new HashMap<>();
+        java.util.HashMap<Integer,Integer> defaultMap = new java.util.HashMap<>();
 
+        assertEquals(defaultMap.toString(), customMap.toString());
     }
 
 
